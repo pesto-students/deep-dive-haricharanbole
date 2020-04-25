@@ -1,4 +1,4 @@
-function rot13(cipheredText) {
+const rot13 = (cipheredText) => {
   if (!isString(cipheredText)) {
     throw new Error(
       "Invalid Input Received. Exprected String. But, received " +
@@ -8,29 +8,29 @@ function rot13(cipheredText) {
   let decipheredText = "";
   for (const character of cipheredText) {
     if (isCapitalAlphabet(character)) {
-      decipheredText = decipheredText.concat(getRotatedUpperCase(character));
+      decipheredText = decipheredText + getRotatedUpperCase(character);
     } else {
-      decipheredText = decipheredText.concat(character);
+      decipheredText = decipheredText + character;
     }
   }
   return decipheredText;
-}
+};
 
-function isString(input) {
+const isString = (input) => {
   return typeof input === "string";
-}
+};
 
-function isCapitalAlphabet(character) {
+const isCapitalAlphabet = (character) => {
   return !(character == character.toLowerCase());
-}
+};
 
-function getRotatedUpperCase(character) {
-  let charCode = character.charCodeAt(0);
+const getRotatedUpperCase = (character) => {
+  const charCode = character.charCodeAt(0);
   if (charCode + 13 > 90) {
     return String.fromCharCode(64 + (charCode + 13 - 90));
   } else {
     return String.fromCharCode(charCode + 13);
   }
-}
+};
 
 export { rot13 };
