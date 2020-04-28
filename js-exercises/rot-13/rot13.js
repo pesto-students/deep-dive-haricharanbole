@@ -1,8 +1,7 @@
 const rot13 = (cipheredText) => {
   if (!isString(cipheredText)) {
     throw new Error(
-      "Invalid Input Received. Exprected String. But, received " +
-        typeof cipheredText
+      `Invalid Input Received. Expected String. But, received ${typeof cipheredText}`
     );
   }
   let decipheredText = "";
@@ -21,7 +20,7 @@ const isString = (input) => {
 };
 
 const isCapitalAlphabet = (character) => {
-  return !(character == character.toLowerCase());
+  return !(character === character.toLowerCase());
 };
 
 const getRotatedUpperCase = (character) => {
